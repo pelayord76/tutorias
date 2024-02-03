@@ -32,14 +32,14 @@ public class PlanController {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("planes");
-		
+
 		List<Plan> planes = (List<Plan>) planDAO.findAll();
-		
+
 		model.addObject("plan", new Plan());
 		model.addObject("cursos", cursoDAO.findAll());
 		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 		model.addObject("planes", planes);
-		
+
 		return model;
 	}
 
@@ -59,12 +59,12 @@ public class PlanController {
 	public ModelAndView addPlan() {
 
 		ModelAndView model = new ModelAndView();
-		
+
 		model.setViewName("formPlan");
 		model.addObject("plan", new Plan());
 		model.addObject("cursos", cursoDAO.findAll());
 		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
-		
+
 		return model;
 	}
 
@@ -82,8 +82,9 @@ public class PlanController {
 
 			model.setViewName("formPlan");
 		}
-		
-		else model.setViewName("redirect:/plan");
+
+		else
+			model.setViewName("redirect:/plan");
 
 		return model;
 	}
@@ -131,13 +132,13 @@ public class PlanController {
 
 		return model;
 	}
-	
+
 	@GetMapping("/plan/nuevo/{idPlan}")
 	public ModelAndView planCreado(@PathVariable long idPlan) {
-		
+
 		ModelAndView model = new ModelAndView();
 		model.setViewName("planes");
-		
+
 		List<Plan> planes = (List<Plan>) planDAO.findAll();
 		Plan plan = planDAO.findById(idPlan).get();
 		
@@ -146,7 +147,7 @@ public class PlanController {
 		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 		model.addObject("planes", planes);
 		model.addObject("planCreado", plan);
-		
+
 		return model;
 	}
 }
