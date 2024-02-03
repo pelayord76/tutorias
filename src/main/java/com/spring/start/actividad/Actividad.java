@@ -1,11 +1,14 @@
 package com.spring.start.actividad;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.start.enmarca.Enmarca;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +26,10 @@ public class Actividad {
 	private String nombre;
 	private String descripcion;
 
-	@OneToMany(targetEntity = Enmarca.class, mappedBy = "actividad", cascade = CascadeType.ALL)
-	private List<Enmarca> planes = new ArrayList<Enmarca>();
+	@OneToMany(mappedBy = "actividad")
+	@Cascade(CascadeType.ALL)
+	@JsonManagedReference
+	private Set<Enmarca> enmarca = new HashSet<Enmarca>();
 
 	public long getId() {
 		return id;
@@ -58,17 +63,17 @@ public class Actividad {
 		this.descripcion = descripcion;
 	}
 
-	public List<Enmarca> getActividades() {
-		return planes;
+	public Set<Enmarca> getEnmarca() {
+		return enmarca;
 	}
 
-	public void setActividades(List<Enmarca> actividades) {
-		this.planes = actividades;
+	public void setEnmarca(Set<Enmarca> enmarca) {
+		this.enmarca = enmarca;
 	}
 
 	@Override
 	public String toString() {
 		return "Actividad [id=" + id + ", obligatoria=" + obligatoria + ", nombre=" + nombre + ", descripcion="
-				+ descripcion + ", planes=" + planes + "]";
+				+ descripcion + ", planes=" + enmarca + "]";
 	}
 }

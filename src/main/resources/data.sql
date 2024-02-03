@@ -21,10 +21,11 @@ insert into tutor (nombre,email,plan) values ('Lucia','lucia@educastur.org',6);
 
 
 insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad1', 'descripcion...');
-insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad1', 'descripcion...');
-insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad1', 'descripcion...');
-insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad1', 'descripcion...');
-insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad1', 'descripcion...');
+insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad2', 'descripcion...');
+insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad3', 'descripcion...');
+insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad4', 'descripcion...');
+insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad5', 'descripcion...');
+insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad6', 'descripcion...');
 
 insert into enmarca(plan_id, actividad_id) values(1, 1);
 insert into enmarca(plan_id, actividad_id) values(2, 2);

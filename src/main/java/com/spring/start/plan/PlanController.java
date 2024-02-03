@@ -59,7 +59,7 @@ public class PlanController {
 		model.addObject("plan", new Plan());
 		model.addObject("cursos", cursoDAO.findAll());
 		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
-
+		
 		return model;
 	}
 
@@ -76,8 +76,9 @@ public class PlanController {
 			model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 
 			model.setViewName("formPlan");
-		} else
-			model.setViewName("redirect:/plan");
+		}
+		
+		else model.setViewName("redirect:/plan");
 
 		return model;
 	}

@@ -1,13 +1,16 @@
 package com.spring.start.plan;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.start.curso.Curso;
 import com.spring.start.enmarca.Enmarca;
 import com.spring.start.tutor.Tutor;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,8 +36,10 @@ public class Plan {
 	@JoinColumn(name = "FK_CURSO")
 	private Curso curso;
 
-	@OneToMany(targetEntity = Enmarca.class, mappedBy = "plan", cascade = CascadeType.ALL)
-	private List<Enmarca> actividades = new ArrayList<Enmarca>();
+	@OneToMany(mappedBy = "plan")
+	@Cascade(CascadeType.ALL)
+	@JsonManagedReference
+	private Set<Enmarca> enmarca = new HashSet<>();
 
 	public Curso getCurso() {
 		return curso;
@@ -68,17 +73,17 @@ public class Plan {
 		this.tutor = tutor;
 	}
 
-	public List<Enmarca> getActividades() {
-		return actividades;
+	public Set<Enmarca> getEnmarca() {
+		return enmarca;
 	}
 
-	public void setActividades(List<Enmarca> actividades) {
-		this.actividades = actividades;
+	public void setEnmarca(Set<Enmarca> enmarca) {
+		this.enmarca = enmarca;
 	}
 
 	@Override
 	public String toString() {
 		return "Plan [id=" + id + ", nombre=" + nombre + ", tutor=" + tutor + ", curso=" + curso + ", actividades="
-				+ actividades + "]";
+				+ enmarca + "]";
 	}
 }

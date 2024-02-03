@@ -1,5 +1,6 @@
 package com.spring.start.enmarca;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.spring.start.actividad.Actividad;
 import com.spring.start.plan.Plan;
 
@@ -12,16 +13,42 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Enmarca {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@ManyToOne
-	@JoinColumn(name = "plan_id")
-	Plan plan;
 
 	@ManyToOne
 	@JoinColumn(name = "actividad_id")
-	Actividad actividad;
+	@JsonBackReference
+	private Actividad actividad;
+
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	@JsonBackReference
+	private Plan plan;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Actividad getActividad() {
+		return actividad;
+	}
+
+	public void setActividad(Actividad actividad) {
+		this.actividad = actividad;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
 }
