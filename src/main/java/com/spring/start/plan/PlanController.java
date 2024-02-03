@@ -32,10 +32,14 @@ public class PlanController {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("planes");
-
+		
 		List<Plan> planes = (List<Plan>) planDAO.findAll();
+		
+		model.addObject("plan", new Plan());
+		model.addObject("cursos", cursoDAO.findAll());
+		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 		model.addObject("planes", planes);
-
+		
 		return model;
 	}
 
@@ -55,6 +59,7 @@ public class PlanController {
 	public ModelAndView addPlan() {
 
 		ModelAndView model = new ModelAndView();
+		
 		model.setViewName("formPlan");
 		model.addObject("plan", new Plan());
 		model.addObject("cursos", cursoDAO.findAll());

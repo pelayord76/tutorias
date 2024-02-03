@@ -18,7 +18,7 @@
 
 	<div class="row">
 		<div class="col-1"></div>
-		<div class="col-10">
+		<div class="col-6">
 
 			<table class="table table-sm table-hover">
 				<thead>
@@ -38,28 +38,75 @@
 							<a th:href="@{~/plan/{id}(id = ${plan.id})}" th:text="${plan.nombre}">nombre</a>
 						</td>
 						<td>
-							<a th:if="${plan.tutor != null}" class="badge badge-pill badge-warning"
-								th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
+							<a th:if="${plan.tutor != null}" class="badge badge-pill badge-warning" th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
 							<span th:text="${plan.tutor?.nombre}">Tutor</span>
 						</td>
 						<td th:text="${plan.curso?.nombre}">Curso</td>
 
 						<!--<td th:text="${plan.actividad?.nombre}">Actividad</td>-->
 
-						<td><a th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href=""
-								th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
+						<td><a th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="col-4">
-
+		<div class="col col-md-4">
+			<!--<form th:action="@{~/plan/save}" th:object="${plan}" method="post">
+				<div class="card bg-light mb-3" style="max-width: 18rem;">
+					<div class="card-header">
+						<input readonly type="text" th:field="*{id}" size=2 />
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">
+							<input type="text" th:field="*{nombre}" size=10 />
+						</h5>
+						<p class="card-text">
+						<ul class="list-group">
+							<li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">Tutoría:
+								<select th:if="${plan.tutor==null}" class="form-control" th:field="*{tutor}">
+									<option th:each="t:${tutores}" th:value="${t.id}" th:text="${t.nombre}">OPCION
+									</option>
+								</select>
+								<select th:if="${plan.tutor!=null}" class="form-control" th:field="*{tutor}">
+									<option th:value="*{tutor.id}" th:text="*{tutor.nombre}">OPCION</option>
+								</select>
+							</li>
+							<li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">Curso
+								<select class="form-control" th:field="*{curso}">
+									<option value="null">No asignado</option>
+									<option th:each="c:${cursos}" th:value="${c.nombre}" th:text="${c.nombre}">OPCION</option>
+								</select>
+							</li>
+							<li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">Actividad:
+								<select class="form-control" th:field="*{enmarca}">
+									<option th:each="a:${actividad}" th:value="${a.id}" th:text="${a.nombre}"></option>
+								</select>
+							</li>
+						</ul>
+						</p>
+					</div>
+				</div>
+				<p><input type="submit" class="btn btn-primary" value="enviar" /></p>
+			</form>-->
 		</div>
-		<div class="col-1">
+		<div class="col-1"></div>
+	</div>
+
+	<div class="toast" th:if role="alert" aria-live="assertive" aria-atomic="true">
+		<div class="toast-header">
+			<img src="..." class="rounded mr-2" alt="...">
+			<strong class="mr-auto">Bootstrap</strong>
+			<small>11 mins ago</small>
+			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="toast-body">
+			Hello, world! This is a toast message.
 		</div>
 	</div>
 
-	<div class="row">
+	<!--<div class="row">
 		<div class="col-1">
 		</div>
 		<div class="col-2">
@@ -67,7 +114,7 @@
 		</div>
 		<div class="col-9">
 		</div>
-	</div>
+	</div>-->
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
