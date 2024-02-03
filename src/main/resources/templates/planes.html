@@ -38,20 +38,23 @@
 							<a th:href="@{~/plan/{id}(id = ${plan.id})}" th:text="${plan.nombre}">nombre</a>
 						</td>
 						<td>
-							<a th:if="${plan.tutor != null}" class="badge badge-pill badge-warning" th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
+							<a th:if="${plan.tutor != null}" class="badge badge-pill badge-warning"
+								th:href="@{~/plan/tutor/del/{id}(id = ${plan.id})}">X</a>
 							<span th:text="${plan.tutor?.nombre}">Tutor</span>
 						</td>
 						<td th:text="${plan.curso?.nombre}">Curso</td>
 
 						<!--<td th:text="${plan.actividad?.nombre}">Actividad</td>-->
 
-						<td><a th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href="" th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
+						<td><a th:if="${plan.tutor == null}" class="badge badge-pill badge-danger" href=""
+								th:href="@{~/plan/del/{id}(id = ${plan.id})}">eliminar</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="col col-md-4">
-			<!--<form th:action="@{~/plan/save}" th:object="${plan}" method="post">
+		<div class="col-md-1"></div>
+		<div class="col col-md-3">
+			<form th:action="@{~/plan/save}" th:object="${plan}" method="post">
 				<div class="card bg-light mb-3" style="max-width: 18rem;">
 					<div class="card-header">
 						<input readonly type="text" th:field="*{id}" size=2 />
@@ -62,7 +65,9 @@
 						</h5>
 						<p class="card-text">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">Tutoría:
+							<li
+								class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+								Tutoría:
 								<select th:if="${plan.tutor==null}" class="form-control" th:field="*{tutor}">
 									<option th:each="t:${tutores}" th:value="${t.id}" th:text="${t.nombre}">OPCION
 									</option>
@@ -71,40 +76,49 @@
 									<option th:value="*{tutor.id}" th:text="*{tutor.nombre}">OPCION</option>
 								</select>
 							</li>
-							<li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">Curso
+							<li
+								class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+								Curso
 								<select class="form-control" th:field="*{curso}">
 									<option value="null">No asignado</option>
-									<option th:each="c:${cursos}" th:value="${c.nombre}" th:text="${c.nombre}">OPCION</option>
+									<option th:each="c:${cursos}" th:value="${c.nombre}" th:text="${c.nombre}">OPCION
+									</option>
 								</select>
 							</li>
-							<li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">Actividad:
+							<li
+								class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
+								Actividad:
 								<select class="form-control" th:field="*{enmarca}">
 									<option th:each="a:${actividad}" th:value="${a.id}" th:text="${a.nombre}"></option>
 								</select>
 							</li>
 						</ul>
+						<p><input type="submit" class="btn btn-primary" value="+" /></p>
 						</p>
 					</div>
 				</div>
-				<p><input type="submit" class="btn btn-primary" value="enviar" /></p>
-			</form>-->
+			</form>
 		</div>
 		<div class="col-1"></div>
 	</div>
 
-	<div class="toast" th:if role="alert" aria-live="assertive" aria-atomic="true">
+	<!--<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 		<div class="toast-header">
-			<img src="..." class="rounded mr-2" alt="...">
-			<strong class="mr-auto">Bootstrap</strong>
-			<small>11 mins ago</small>
+			<svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+				<rect width="100%" height="100%" fill="#007aff"></rect>
+			</svg>
+			<strong class="mr-auto">Nuevo plan</strong>
+			<small>Ahora</small>
 			<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
 		<div class="toast-body">
-			Hello, world! This is a toast message.
+			<span th:text="${planCreado.nombre}"></span>
+			<span th:text="${planCreado.tutor?.nombre}"></span>
+			<span th:text="${planCreado.curso?.nombre}"></span>
 		</div>
-	</div>
+	</div>-->
 
 	<!--<div class="row">
 		<div class="col-1">
