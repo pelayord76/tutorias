@@ -126,7 +126,8 @@ public class PlanController {
 		planDAO.save(plan);
 
 		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:/plan");
+		model.addObject("planCreado", plan);
+		model.setViewName("redirect:/plan/nuevo/" + plan.getId());
 
 		return model;
 	}
