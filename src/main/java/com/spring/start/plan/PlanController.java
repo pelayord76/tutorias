@@ -130,4 +130,22 @@ public class PlanController {
 
 		return model;
 	}
+	
+	@GetMapping("/plan/nuevo/{idPlan}")
+	public ModelAndView planCreado(@PathVariable long idPlan) {
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("planes");
+		
+		List<Plan> planes = (List<Plan>) planDAO.findAll();
+		Plan plan = planDAO.findById(idPlan).get();
+		
+		model.addObject("plan", new Plan());
+		model.addObject("cursos", cursoDAO.findAll());
+		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
+		model.addObject("planes", planes);
+		model.addObject("planCreado", plan);
+		
+		return model;
+	}
 }
