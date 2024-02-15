@@ -55,7 +55,8 @@
 									class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
 									Actividad:
 									<select class="form-control" th:field="*{enmarca}">
-										<option th:each="a:${actividad}" th:value="${a.id}" th:text="${a.nombre}"></option>
+										<option th:each="a:${actividad}" th:value="${a.id}" th:text="${a.nombre}">
+										</option>
 									</select>
 								</li>
 							</ul>

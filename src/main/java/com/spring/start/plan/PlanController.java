@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.start.curso.CursoDAO;
+import com.spring.start.enmarca.EnmarcaDAO;
 import com.spring.start.tutor.Tutor;
 import com.spring.start.tutor.TutorDAO;
 
@@ -26,6 +27,9 @@ public class PlanController {
 
 	@Autowired
 	TutorDAO tutorDao;
+	
+	@Autowired
+	EnmarcaDAO enmarcaDAO;
 
 	@GetMapping("/plan")
 	public ModelAndView tutorias() {
@@ -50,8 +54,10 @@ public class PlanController {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("plan");
+		
 		model.addObject("plan", plan);
-
+		model.addObject("enarca", enmarcaDAO.findAll());
+		
 		return model;
 	}
 
