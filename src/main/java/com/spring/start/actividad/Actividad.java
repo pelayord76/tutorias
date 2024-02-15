@@ -1,10 +1,6 @@
 package com.spring.start.actividad;
 
-import java.util.HashSet;
 import java.util.Set;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.start.enmarca.Enmarca;
@@ -26,10 +22,9 @@ public class Actividad {
 	private String nombre;
 	private String descripcion;
 
-	@OneToMany(mappedBy = "actividad")
-	@Cascade(CascadeType.ALL)
+	@OneToMany(mappedBy = "actividad", targetEntity = Enmarca.class)
 	@JsonManagedReference
-	private Set<Enmarca> enmarca = new HashSet<Enmarca>();
+	private Set<Enmarca> enmarca;
 
 	public long getId() {
 		return id;

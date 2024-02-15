@@ -28,11 +28,11 @@ insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad4', 
 insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad5', 'descripcion...');
 insert into actividad(obligatoria, nombre, descripcion) values(0, 'actividad6', 'descripcion...');
 
-insert into enmarca(plan_id, actividad_id) values(1, 1);
-insert into enmarca(plan_id, actividad_id) values(2, 2);
-insert into enmarca(plan_id, actividad_id) values(3, 3);
-insert into enmarca(plan_id, actividad_id) values(4, 4);
-insert into enmarca(plan_id, actividad_id) values(5, 5);
+insert into enmarca(plan_id, actividad_id, fecha) values(1, 1, '2019-03-08');
+insert into enmarca(plan_id, actividad_id, fecha) values(2, 2, '2019-03-08');
+insert into enmarca(plan_id, actividad_id, fecha) values(3, 3, '2019-03-08');
+insert into enmarca(plan_id, actividad_id, fecha) values(4, 4, '2019-03-08');
+insert into enmarca(plan_id, actividad_id, fecha) values(5, 5, '2019-03-08');
 
 insert into usuario(nombre, password) values('pelayo', '$2a$12$pyfNrA8fDrJX1xyXJAz.FOvpYpymdrNtO946dUFlQE71sKhom.iQO');
 insert into usuario(nombre, password) values('pedro', '$2a$12$FKYimulRZzDqm.L9IzuIMeRzKkWq.Pb7zOvdWr1FljEA1dC6lC3T2');

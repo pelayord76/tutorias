@@ -27,7 +27,11 @@ public class Enmarca {
 	@JoinColumn(name = "plan_id")
 	@JsonBackReference
 	private Plan plan;
+	
+	private String fecha;
 
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -50,5 +54,18 @@ public class Enmarca {
 
 	public void setPlan(Plan plan) {
 		this.plan = plan;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	@Override
+	public String toString() {
+		return "Enmarca [id=" + id + ", actividad=" + actividad + ", plan=" + plan + ", fecha=" + fecha + "]";
 	}
 }
